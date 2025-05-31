@@ -30,7 +30,9 @@ public class BorrowController {
     // Borrow a book (if availableCopies > 0)
     @PostMapping
     public ResponseEntity<String> borrowBook(@RequestBody Borrow borrow) {
-        borrowService.borrowBook(borrow);
+        if(borrowService.borrowBook(borrow)==-1){
+            return ResponseEntity.ok("Book Not Available.");
+        }
         return ResponseEntity.ok("Book borrowed successfully.");
     }
 

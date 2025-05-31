@@ -19,7 +19,9 @@ public class BorrowRepository {
         String updateCopies = "UPDATE books SET available_copies = available_copies - 1 WHERE id = ? AND available_copies > 0";
         int rows = jdbcTemplate.update(updateCopies, borrow.getBookId());
 
-        if (rows == 0) throw new RuntimeException("Book is not available");
+        if (rows == 0){
+            return -1;
+        }
 
         return jdbcTemplate.update(
                 "INSERT INTO borrows (member_id, book_id, borrowed_date, due_date) VALUES (?, ?, ?, ?)",

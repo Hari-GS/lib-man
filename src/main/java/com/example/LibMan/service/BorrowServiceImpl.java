@@ -25,8 +25,9 @@ public class BorrowServiceImpl {
         return borrowRepository.findById(id);
     }
 
-    public void borrowBook(Borrow borrow) {
-        borrowRepository.lendBook(borrow);
+    public int borrowBook(Borrow borrow) {
+
+        return borrowRepository.lendBook(borrow);
     }
 
     public void returnBook(int id) {

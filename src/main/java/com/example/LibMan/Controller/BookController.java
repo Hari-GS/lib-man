@@ -44,8 +44,8 @@ public class BookController {
         bookRepository.delete(id);
     }
 
-    @GetMapping("/search")
-    public List<Book> searchBooks(@RequestParam String keyword) {
+    @GetMapping("/search/{keyword}")
+    public List<Book> searchBooks(@PathVariable String keyword) {
         return bookRepository.search(keyword);
     }
 }
